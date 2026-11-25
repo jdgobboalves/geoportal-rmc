@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="css/style.css?v=22">
+  <link rel="stylesheet" href="css/style.css?v=23">
 </head>
 <body>
   <!-- ================= Barra superior ================= -->
@@ -54,8 +54,8 @@
             <label class="chk"><input type="checkbox" id="chk-rot" checked><span>Nomes dos municípios</span></label>
             <label class="rotulo" for="rng-mun-cor">Transparência das cores <span id="val-mun-cor">30%</span></label>
             <input type="range" id="rng-mun-cor" min="0" max="100" value="30">
-            <label class="rotulo" for="rng-fundo">Transparência do mapa de fundo <span id="val-fundo">10%</span></label>
-            <input type="range" id="rng-fundo" min="0" max="100" value="10">
+            <label class="rotulo" for="rng-fundo">Transparência do mapa de fundo <span id="val-fundo">40%</span></label>
+            <input type="range" id="rng-fundo" min="0" max="100" value="40">
             <p class="nota">IBGE – Malha Municipal 2024 e Composição das Regiões Metropolitanas 2025. Os setores censitários estão em <b>Demografia</b>.</p>
           </div>
         </details>
@@ -341,9 +341,9 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- aumente o ?v= ao alterar os arquivos, para o navegador não usar a versão em cache -->
-  <script src="js/config.js?v=17"></script>
-  <script src="js/app.js?v=17"></script>
-  <script src="js/interface.js?v=17"></script>
-  <script src="js/monte-mapa.js?v=17"></script>
+  <script src="js/config.js?v=18"></script>
+  <script src="js/app.js?v=18"></script>
+  <script src="js/interface.js?v=18"></script>
+  <script src="js/monte-mapa.js?v=18"></script>
 </body>
 </html>

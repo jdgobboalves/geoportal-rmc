@@ -128,8 +128,8 @@ const CONFIG = {
                      "#9a6324", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1",
                      "#1f3f99", "#a9a9a9", "#ff7f7f", "#7fb3ff", "#c9a0dc", "#2e8b57"],
   transparencia_municipios: 0.30,   // 0 = cor sólida, 1 = invisível
-  transparencia_fundo: 0.10,
-  fundo_inicial: "Escuro (Esri)",
+  transparencia_fundo: 0.40,
+  fundo_inicial: "OpenStreetMap",
   centro: [-22.84, -47.10],
   zoom: 10,
 };
