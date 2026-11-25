@@ -29,6 +29,9 @@
 
   // crossOrigin: necessário para o "Monte seu mapa" conseguir copiar os blocos do fundo para a imagem
   const fundos = {
+    "Escuro (Esri)": L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 19, maxNativeZoom: 16, crossOrigin: "anonymous", fonte: "Esri World Dark Gray",
+      attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
     "Cinza claro (Esri)": L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
       maxZoom: 19, maxNativeZoom: 16, crossOrigin: "anonymous", fonte: "Esri World Light Gray",
       attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
@@ -108,7 +111,7 @@
              color: "#ffffff", weight: 0.4, opacity: fora ? 0.2 : 0.7 };
   };
   const estiloMun = f => ({
-    fill: false, color: f.properties.CD_MUN === estado.municipio ? "#d1495b" : "#1f2933",
+    fill: false, color: f.properties.CD_MUN === estado.municipio ? "#ff6b81" : "#e2e8f0",
     weight: f.properties.CD_MUN === estado.municipio ? 3 : 1.4, opacity: 0.9,
   });
   function legendaSetores() {
@@ -322,7 +325,7 @@
     const urb = { type: "FeatureCollection", features: dadosSet.features.filter(f => f.properties.dts_2025 != null) };
     camadaTSSet = L.geoJSON(urb, { renderer: rCanvas.tsset, style: estiloTSSet,
       onEachFeature: (f, l) => l.on({
-        mouseover: e => e.target.setStyle({ weight: 2, color: "#222" }),
+        mouseover: e => e.target.setStyle({ weight: 2, color: "#fff" }),
         mouseout: e => camadaTSSet.resetStyle(e.target),
         click: e => { L.DomEvent.stop(e); consulta(e.latlng, f.properties); },
       }) });
@@ -620,7 +623,7 @@
       camadaSet = L.geoJSON(set, {
         renderer: rCanvas.setores, style: estiloSetor,
         onEachFeature: (f, l) => l.on({
-          mouseover: e => { e.target.setStyle({ weight: 2, color: "#222" }); hover.update(f.properties); },
+          mouseover: e => { e.target.setStyle({ weight: 2, color: "#fff" }); hover.update(f.properties); },
           mouseout: e => { camadaSet.resetStyle(e.target); hover.update(); },
           click: e => { L.DomEvent.stop(e); consulta(e.latlng, f.properties); },
         }),
@@ -763,7 +766,7 @@
         itens: (GEO.municipios || []).map(([cd, nm]) => ({ cor: rgba(corMun[cd], Math.max(estado.opacMunCor, 0.15)), rotulo: nm })) });
     }
     if (on(camadaMun)) lst.push({ id: "mun", titulo: "Limites", fonte: "IBGE – Malha Municipal 2024",
-      itens: [{ linha: "#1f2933", larg: 1.4, rotulo: "Limite municipal" }].concat(estado.municipio ? [{ linha: "#d1495b", larg: 3, rotulo: nomeMun }] : []) });
+      itens: [{ linha: "#94a3b8", larg: 1.4, rotulo: "Limite municipal" }].concat(estado.municipio ? [{ linha: "#ff6b81", larg: 3, rotulo: nomeMun }] : []) });
     return lst;
   }
   const fundoAtivo = () => Object.values(fundos).find(l => mapa.hasLayer(l));

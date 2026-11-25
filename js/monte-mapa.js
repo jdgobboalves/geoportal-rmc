@@ -66,7 +66,7 @@
     const W = Math.round(r0.width), H = Math.round(r0.height);
     const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
     const ctx = cv.getContext("2d");
-    ctx.fillStyle = "#e6e9e8"; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = "#0b0f17"; ctx.fillRect(0, 0, W, H);
     const opac = el => {
       let o = 1;
       for (let n = el; n && n !== cont; n = n.parentElement) {
@@ -96,8 +96,8 @@
         p.querySelectorAll(".rotulo-mun").forEach(t => {
           const r = t.getBoundingClientRect(), x = r.left - r0.left + r.width / 2, y = r.top - r0.top + r.height / 2;
           if (x < 0 || y < 0 || x > W || y > H) return;
-          ctx.strokeStyle = "rgba(255,255,255,.95)"; ctx.lineWidth = 3.5 * k; ctx.strokeText(t.textContent, x, y);
-          ctx.fillStyle = "#1f2933"; ctx.fillText(t.textContent, x, y);
+          ctx.strokeStyle = "rgba(11,15,23,.9)"; ctx.lineWidth = 3.5 * k; ctx.strokeText(t.textContent, x, y);
+          ctx.fillStyle = "#f1f5f9"; ctx.fillText(t.textContent, x, y);
         });
         continue;
       }
