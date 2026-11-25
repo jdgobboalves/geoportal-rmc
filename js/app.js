@@ -595,8 +595,10 @@
   // margem para o enquadramento não ficar atrás do cartão do município (canto superior direito)
   function folga() {
     const pm = $("painel-mun"), w = mapa.getSize().x;
-    if (!pm || pm.hidden || pm.classList.contains("minimizado") || w < 700) return { padding: [20, 20] };
-    return { paddingTopLeft: [20, 20], paddingBottomRight: [pm.offsetWidth + 24, 20] };
+    // temas na parte de baixo: reserva a altura da barra de temas
+    const doca = document.body.classList.contains("painel-baixo") && w >= 700 ? $("painel").offsetHeight + 16 : 0;
+    if (!pm || pm.hidden || pm.classList.contains("minimizado") || w < 700) return { paddingTopLeft: [20, 20], paddingBottomRight: [20, 20 + doca] };
+    return { paddingTopLeft: [20, 20], paddingBottomRight: [pm.offsetWidth + 24, 20 + doca] };
   }
   function selecionarMunicipio(cd) {
     estado.municipio = cd; $("sel-mun").value = cd; infoMunicipio(); redesenhar();

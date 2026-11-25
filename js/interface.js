@@ -46,6 +46,16 @@
   // cartão sobre o mapa: rolar/clicar nele não mexe no mapa
   if (window.L) { L.DomEvent.disableClickPropagation($("painel-mun")); L.DomEvent.disableScrollPropagation($("painel-mun")); }
 
+  // temas na parte de baixo: só um tema aberto por vez; clicar fora do tema fecha
+  const doca = () => document.body.classList.contains("painel-baixo") && !matchMedia("(max-width: 820px)").matches;
+  document.querySelectorAll("#painel-camadas > .tema").forEach(t => t.addEventListener("toggle", () => {
+    if (doca() && t.open) document.querySelectorAll("#painel-camadas > .tema[open]").forEach(o => { if (o !== t) o.open = false; });
+  }));
+  document.getElementById("mapa").addEventListener("pointerdown", () => {
+    if (doca()) document.querySelectorAll("#painel-camadas > .tema[open]").forEach(o => (o.open = false));
+  });
+  if (window.L) { L.DomEvent.disableClickPropagation($("painel")); L.DomEvent.disableScrollPropagation($("painel")); }
+
   $("btn-menu").onclick = () => {
     const ab = $("nav").classList.toggle("aberto"); $("btn-menu").setAttribute("aria-expanded", String(ab));
   };

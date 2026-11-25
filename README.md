@@ -40,6 +40,9 @@ Licenças: MapBiomas (CC-BY 4.0), Copernicus DEM (licença ESA, uso livre com at
 
 Duplo clique em `iniciar_geoportal.bat` (abre http://localhost:8000).
 
+Os temas ficam numa barra na parte de baixo do mapa (visual "dark glass"); para ver o painel lateral antigo, abra
+com `?painel=lateral` no endereço (ex.: http://localhost:8000/?painel=lateral).
+
 ## Gerar / atualizar os dados
 
 Todos os scripts rodam com o Python do QGIS:

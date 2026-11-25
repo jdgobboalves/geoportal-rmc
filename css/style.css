@@ -495,3 +495,44 @@ select:focus, .campo:focus { outline: 2px solid color-mix(in srgb, var(--destaqu
     -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   }
 }
+
+/* ================= Temas na parte de baixo do mapa (body.painel-baixo; padrão – ?painel=lateral desliga) =================
+   Os 4 temas viram uma barra de botões sobre a base do mapa; o conteúdo do tema aberto sobe
+   como um painel de vidro sobre o mapa. Em telas pequenas continua a gaveta lateral. */
+@media (min-width: 821px) {
+  .painel-baixo .painel {
+    position: absolute; z-index: 1100; left: 12px; right: 12px; bottom: 26px; width: auto; flex: none;
+    background: none; border: 0; padding: 0; overflow: visible; pointer-events: none;
+  }
+  .painel-baixo .painel > * { pointer-events: auto; }
+  .painel-baixo #painel-camadas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+  .painel-baixo #painel-camadas[hidden] { display: none; }
+  .painel-baixo .tema {
+    margin: 0; position: relative; overflow: visible;
+    background: rgba(14, 19, 28, .72); border-radius: 12px;
+  }
+  .painel-baixo .tema > summary { padding: 10px 12px; border-radius: 0 0 12px 12px; }
+  .painel-baixo .tema > summary::after { transform: rotate(-135deg); margin-top: 4px; }
+  .painel-baixo .tema[open] > summary::after { transform: rotate(45deg); margin-top: -4px; }
+  .painel-baixo .tema[open] { box-shadow: 0 0 0 2px color-mix(in srgb, var(--cor-tema) 70%, transparent), 0 8px 24px rgba(0,0,0,.35); }
+  .painel-baixo .tema-ico { width: 34px; height: 34px; }
+  .painel-baixo .tema-tit small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .painel-baixo .tema-tit { min-width: 0; }
+  .painel-baixo .tema-corpo {
+    position: absolute; bottom: calc(100% + 10px); left: 0; width: max(100%, 380px);
+    max-height: calc(100vh - var(--topo-h) - 140px); overflow-y: auto;
+    padding: 14px 16px 16px; border-radius: 12px;
+    background: rgba(14, 19, 28, .80); border: 1px solid var(--vidro-borda); border-top: 4px solid var(--cor-tema);
+    -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 12px 32px rgba(0,0,0,.45); scrollbar-color: rgba(255,255,255,.25) transparent;
+  }
+  .painel-baixo .tema:nth-child(4) .tema-corpo { left: auto; right: 0; }
+  .painel-baixo .tema-corpo > .bloco:first-child, .painel-baixo .tema-corpo > :first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .painel-baixo #painel-monte {
+    width: 380px; max-height: calc(100vh - var(--topo-h) - 150px); overflow-y: auto;  /* livra os botões de zoom */
+    background: rgba(14, 19, 28, .82); margin-bottom: 0;
+  }
+  /* escala, atribuição e "Clique no mapa" sobem para não ficar atrás da barra */
+  .painel-baixo .leaflet-bottom { bottom: 84px; }
+  .painel-baixo .btn-painel { display: none; }
+}
